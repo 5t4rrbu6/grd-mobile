@@ -1,7 +1,7 @@
 # 📱 grd-mobile
 
-![Expo](https://img.shields.io/badge/Expo-SDK%2054-000020?logo=expo&logoColor=white)
-![React Native](https://img.shields.io/badge/React%20Native-0.81-blue?logo=react)
+![Expo](https://img.shields.io/badge/Expo-SDK%2051-000020?logo=expo&logoColor=white)
+![React Native](https://img.shields.io/badge/React%20Native-0.74-blue?logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20Web-green)
 
@@ -12,91 +12,72 @@ Designed with scalable structure, reusable components, and clean navigation arch
 
 ## ✨ Features
 
-- 🚀 Expo SDK 54
-- 📁 File-based routing (Expo Router)
+- 🚀 Expo SDK 51
+- 📁 File-based routing (Expo Router v3)
 - 🧭 Bottom Tab Navigation
-- 🎨 Modern UI with reusable components
+- 🎨 Modern UI with **NativeWind** (Tailwind CSS for React Native)
+- 🖌️ Icons powered by **Lucide**
 - ⚡ Fast Refresh & Hot Reload
 - 📱 Cross-platform support (Android / iOS / Web)
 - 🧠 TypeScript support
-- 🎯 Clean project structure
-
----
-
-## 🖼️ Preview
-
-> Add screenshots here later:
-
-```
-assets/screenshots/home.png
-assets/screenshots/patrol.png
-```
-
-Example:
-
-```md
-![Home Screen](assets/screenshots/home.png)
-```
-
----
+- 🎯 Clean project structure (Separation of Concerns)
 
 ## 🧱 Project Architecture
 
-```
+````
 grd-mobile
-├── app/                # Routes (Expo Router)
-│   ├── (tabs)/         # Tab navigation
-│   └── _layout.tsx
+├── app/                # Routes (Expo Router - File-based)
+│   ├── (tabs)/         # Tab navigation group
+│   │   ├── _layout.tsx # Tab navigator config
+│   │   ├── home.tsx    # Home Screen
+│   │   └── patrol.tsx  # Patrol Screen
+│   ├── _layout.tsx     # Root layout
+│   └── index.tsx       # Entry point / Splash
 │
 ├── components/         # Reusable UI components
 ├── contexts/           # Global state (Context API)
-├── constants/          # Colors & configuration
-├── assets/             # Images & fonts
-├── mocks/              # Mock data
-├── types/              # TypeScript types
+├── constants/          # Colors, Fonts & Configuration
+├── assets/             # Images & Fonts
+├── mocks/              # Mock data for development
+├── types/              # TypeScript definitions
 │
 ├── app.json            # Expo configuration
-├── babel.config.js     # Babel config
+├── babel.config.js     # Babel config (NativeWind support)
 ├── metro.config.js     # Metro bundler config
 ├── tsconfig.json       # TypeScript config
 └── package.json        # Dependencies
-```
-
----
 
 ## 🧰 Tech Stack
 
-| Technology        | Description            |
-| ----------------- | ---------------------- |
-| Expo              | React Native Framework |
-| React Native      | Mobile development     |
-| Expo Router       | File-based routing     |
-| TypeScript        | Type-safe development  |
-| Expo Vector Icons | Icon system            |
-
----
+| Technology         | Description                       |
+| ------------------ | --------------------------------- |
+| Expo SDK 51        | React Native Framework            |
+| React Native 0.74  | Mobile development core           |
+| Expo Router        | File-based navigation             |
+| TypeScript         | Type-safe development             |
+| NativeWind         | Tailwind CSS styling              |
+| Lucide React Native| Icon system                       |
+| React Context API  | State management                  |
 
 ## ⚙️ Requirements
 
-- Node.js (LTS recommended)
+- Node.js (LTS v18 or v20 recommended)
 - npm
-- Expo CLI (optional)
+- Expo Go App (for testing on physical device)
 
 Check version:
 
 ```bash
 node -v
 npm -v
-```
-
----
+````
 
 ## 📦 Installation
 
 Clone repository:
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/5t4rrbu6/grd-mobile.git
 cd grd-mobile
 ```
 
@@ -105,8 +86,6 @@ Install dependencies:
 ```bash
 npm install
 ```
-
----
 
 ## ▶️ Running the Project
 
@@ -122,103 +101,90 @@ Clear cache (recommended if error occurs):
 npx expo start -c
 ```
 
----
-
 ## 📱 Running on Device
 
-1. Install **Expo Go** (Android / iOS)
+1. Install **Expo Go** from App Store or Play Store.
 2. Run:
-
-```bash
-npx expo start
-```
-
-3. Scan the QR code from terminal/browser.
-
----
-
-## 🧭 Routing Example (Expo Router)
-
-```
-app/
- ├── index.tsx        → /
- ├── (tabs)/
- │   ├── _layout.tsx  → Tabs Layout
- │   ├── home.tsx
- │   ├── patrol.tsx
- │   └── more.tsx
-```
-
----
+   ```bash
+   npx expo start
+   ```
+3. Scan the QR code using:
+   - **Android:** Expo Go app camera.
+   - **iOS:** Default Camera app (opens Expo Go automatically).
 
 ## 🎨 Icons
 
-Using:
+This project uses **Lucide React Native** for icons.
 
-```bash
-@expo/vector-icons
-```
-
-Example:
+Example usage:
 
 ```tsx
-import { Ionicons } from "@expo/vector-icons";
+import { Home, User, Bell } from 'lucide-react-native';
 
-<Ionicons name="home" size={24} color="black" />;
+// Usage
+<Home size={24} color="black" />
+<User size={24} color="#3b82f6" />
 ```
-
----
 
 ## 🧪 Useful Commands
 
 Install Expo-compatible packages:
 
 ```bash
-npx expo install <package-name> --npm
+npx expo install <package-name>
 ```
 
-Check project health:
+Check project health & dependency versions:
 
 ```bash
 npx expo doctor
 ```
 
----
-
 ## 🧹 Troubleshooting
 
 ### Clear Metro Cache
+
+If the app doesn't update or shows old code:
 
 ```bash
 npx expo start -c
 ```
 
-### Reset Dependencies
+### Reset Dependencies (Windows PowerShell)
 
-```bash
-rm -r node_modules
-del package-lock.json
+If `npm install` fails or node_modules seems broken:
+
+```powershell
+Remove-Item -Recurse -Force node_modules
+Remove-Item package-lock.json
 npm install
 ```
 
----
+### Reset Dependencies (Mac / Linux / Git Bash)
+
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
 
 ## 🚀 Future Improvements
 
-- 🔐 Authentication
-- 🌐 API Integration
+- 🔐 Authentication (Login/Register)
+- 🌐 API Integration with Backend
 - 🔔 Push Notifications
-- 🗄️ Offline Storage
-- 🌙 Dark Mode
-
----
+- 🗄️ Offline Storage (SQLite / AsyncStorage)
+- 🌙 Dark Mode Support
 
 ## 📄 License
 
 MIT License
 
----
-
 ## 👨‍💻 Author
 
 Built with ❤️ using Expo & React Native.
+
+**GitHub:** [5t4rrbu6](https://github.com/5t4rrbu6)
+
+```
+
+```
